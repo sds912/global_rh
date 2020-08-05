@@ -9,6 +9,7 @@ const useStyles = makeStyles(() => ({
       height: '120px',
       backgroundColor:'#000000',
       margin: '0px auto',
+      marginTop: '120px',
       opacity:'.3'
   },
   searchForm:{
@@ -16,7 +17,7 @@ const useStyles = makeStyles(() => ({
     justifyContent:'center',
     opacity: '1',
     display: 'flex',
-    top: '52%',
+    top: '65%',
     left: '15%',
     width: '70%',
     zIndex:'1080'

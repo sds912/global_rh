@@ -12,6 +12,8 @@ import TrendingFlatIcon from '@material-ui/icons/TrendingFlat';
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
+
+    backgroundColor: '#ffffff'
     
   },
   arrow:{

@@ -50,7 +50,7 @@ export default function Header(props) {
         <IconButton>
           <SearchIcon />
         </IconButton>
-        <Button variant="outlined" size="small" style={{color: '#ffffff'}}> 
+        <Button variant="outlined" size="small" style={{color: '#ffffff', backgroundColor:'green'}}> 
           Mon compte
         </Button>
       </Toolbar>

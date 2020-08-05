@@ -1,27 +1,30 @@
 import React, { Component } from 'react';
 import { Map, GoogleApiWrapper } from 'google-maps-react';
+import GoogleMapReact from 'google-map-react';
 
 const mapStyles = {
   width: '100%',
   height: '100%'
 };
 
-export class MapContainer extends Component {
-  render() {
+const MapContainer  = (props)  => {
+
+  const handleApiLoaded = (map, maps) => {
+    // use map and maps objects
+  };
+ 
     return (
-      <Map
-        google={this.props.google}
-        zoom={14}
-        style={mapStyles}
-        initialCenter={{
-         lat: -1.2884,
-         lng: 36.8233
-        }}
-      />
+      <GoogleMapReact
+      bootstrapURLKeys={{ key: 'AIzaSyC092jkLHo4VkS1zcn47JTkDJJCV8V-Ce0'}}
+      defaultCenter={this.props.center}
+      defaultZoom={this.props.zoom}
+      yesIWantToUseGoogleMapApiInternals
+      onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}
+    >
+      
+    </GoogleMapReact>
     );
-  }
+  
 }
 
-export default GoogleApiWrapper({
-  apiKey: 'AIzaSyC092jkLHo4VkS1zcn47JTkDJJCV8V-Ce0'
-})(MapContainer);
+export default MapContainer;

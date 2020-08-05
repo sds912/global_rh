@@ -1,5 +1,6 @@
 import React from 'react'
 import { makeStyles, Grid, Typography } from '@material-ui/core'
+import MainButton from '../buttons/MainButton';
 
 const useStyles = makeStyles(() => ({
 
@@ -46,7 +47,7 @@ const AboutUs = () => {
                         <Typography variant='h2'></Typography>
                         <Typography variant='body1'></Typography>
                      </div>
-                  
+                    <MainButton />
                  </Grid>
                  </Grid>
             </div>

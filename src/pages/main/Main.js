@@ -7,13 +7,15 @@ import AboutUs from '../../components/about-us/AboutUs';
 import Jobs from '../../components/jobs/Jobs';
 import Sol from '../../components/solution/Solution';
 import { MapContainer } from '../../components/map/MapContainer';
+import { GoogleApiWrapper } from 'google-maps-react';
+import Footer from '../../components/footer/Footer';
+import MainInfo from '../../components/main-info/MainInfo';
 
 
 const useStyles = makeStyles((theme) => ({
-  markdown: {
-    ...theme.typography.body2,
-    padding: theme.spacing(3, 0),
-  },
+ main:{
+   width: '100%',
+ }
 }));
 
 
@@ -21,13 +23,15 @@ export default function Main(props) {
   const classes = useStyles();
 
   return (
-    <div className="Main"> 
+    <div className={classes.main}> 
       
        <Banner />
        <AboutUs />
+       <MainInfo />
        <Jobs />
        <Sol />
-       <MapContainer />
+       <GoogleApiWrapper />
+       <Footer />
     </div>
   );
 }
