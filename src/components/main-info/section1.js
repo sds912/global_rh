@@ -5,7 +5,7 @@ const useStyles = makeStyles( () =>({
     root:{
         backgroundColor: '#2196F3',
         maxWidth: '100%',
-        height: '320px',
+        height: '220px',
         padding: '1.5em',
         paddingTop: '3em',
         textAlign: 'center'
@@ -33,10 +33,8 @@ const Section1 = () =>  {
   const  classes = useStyles();
     return (
         <div className={classes.root}>
-             <Typography variant="h5" className={classes.title}>Solutions TPE/PME</Typography>
-             <Typography variant="p" className={classes.description}>
-             Direct Recrutement : notre solution 100% PME conçue pour simplifier au quotidien vos recrutements en CDI, CDD et travail temporaire.
-             </Typography>
+             <Typography variant="h5" className={classes.title}>Organisme International</Typography>
+             
              <br />
              <Button variant="outlined"  className={classes.btn} >
                 En Savoir Plus

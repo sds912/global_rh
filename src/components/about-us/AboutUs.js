@@ -38,8 +38,11 @@ const AboutUs = () => {
                      <div className={classes.text1}> 
                         <Typography variant='h2' className={classes.title}>Qui sommes nous ?</Typography>
                         <Typography variant='body1'>
-                        They should be easy to scan for relevant and actionable information. Elements, like text and images, should be placed on them in a way that clearly indicates hierarchy.
-                        They should be easy to scan for relevant and actionable information. Elements, like text and images, should be placed on them in a way that clearly indicates hierarchy.
+                            GLOBAL RH est un Cabinet d’intérim, de placement et de suivi de personnels qui permet aux
+                            entreprises d’atteindre leurs performances et de s’adapter aux changements technologiques
+                            du marché de l’emploi.
+                            Sa principale mission c’est d’intervenir sur l’ensemble des activités liées aux Ressources
+                            Humaines.
                         </Typography>
                      </div>
 

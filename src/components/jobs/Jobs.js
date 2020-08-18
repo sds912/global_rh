@@ -7,7 +7,7 @@ const useStyles = makeStyles(() => ({
 
     root:{
       width: '80%',
-       margin: '80px auto'
+       margin: '180px auto'
     },
     title: {
       marginBottom: '80px',
@@ -72,7 +72,7 @@ const Jobs = () => {
 
         return (
             <div className={classes.root}>
-                <Typography variant='h2' className={classes.title}>Offres d'emploie</Typography>
+                <Typography variant='h2' className={classes.title}>OFFRES D'EMPLOIE</Typography>
                  <Grid container spacing={3}>
                      {
                     jobs.map(item =>(

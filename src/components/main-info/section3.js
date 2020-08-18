@@ -33,10 +33,9 @@ const Section3 = () =>  {
   const  classes = useStyles();
     return (
         <div className={classes.root}>
-             <Typography variant="h5" className={classes.title}>Vous avez un projet de recrutement ?</Typography>
-             <Typography variant="p" className={classes.description}>
-             Intérim, CDI, CDD ou alternance, nous vous accompagnons pour recruter rapidement le profil que vous cherchez !
-             </Typography>
+             <Typography variant="h5" className={classes.title}>Entreprise nationale ou structure publique (Direction, Agence, Ministère, Office et
+Collectivités locales</Typography>
+             
              <br />
              <Button variant="outlined"  className={classes.btn} >
                 En Savoir Plus

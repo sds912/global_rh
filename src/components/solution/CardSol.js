@@ -11,7 +11,7 @@ import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345,
+    width: "89%"
     
   },
   arrow:{
@@ -70,10 +70,10 @@ const  SolCard = (props) => {
       <CardActionArea>
         <CardMedia
           component="img"
-          alt="Contemplative Reptile"
+          alt="solution image"
           height="160"
           image={sol.image}
-          title="Contemplative Reptile"
+          title="solution"
         />
         <Typography gutterBottom variant="h5" component="h2" className={classes.titreText}> 
             {sol.titre}

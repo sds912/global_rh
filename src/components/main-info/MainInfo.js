@@ -19,7 +19,7 @@ const MainInfo = () =>  {
     const  classes = useStyles();
     return (
         <div className={classes.root}>
-           <Typography className={classes.title}>Nos Solutions d'interim</Typography>
+           <Typography className={classes.title}>Nos Solutions  RH</Typography>
             <Grid container >
                 <Grid item sm={6}>
                  <Section1 />

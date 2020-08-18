@@ -10,6 +10,9 @@ import { MapContainer } from '../../components/map/MapContainer';
 import { GoogleApiWrapper } from 'google-maps-react';
 import Footer from '../../components/footer/Footer';
 import MainInfo from '../../components/main-info/MainInfo';
+import Sectors from '../../components/secteur/sectors';
+import Prestations from '../../components/prestations/Prestation';
+import Formations from '../../components/formations/Formations';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -27,9 +30,10 @@ export default function Main(props) {
       
        <Banner />
        <AboutUs />
-       <MainInfo />
+       <Sectors />
+       <Prestations />
+       <Formations/>
        <Jobs />
-       <Sol />
        <GoogleApiWrapper />
        <Footer />
     </div>

@@ -4,7 +4,7 @@ import { Typography, List, ListItemText, makeStyles } from '@material-ui/core';
 const useStyles = makeStyles( () =>({
 
     btn:{
-        backgroundColor: '#ff3815ff',
+        backgroundColor: '#00976b',
         transition: 'background-color .5s',
         border: '0px',
         width: '340px',
@@ -17,7 +17,7 @@ const useStyles = makeStyles( () =>({
         fontSize: '16px',
         fontWeight: '600',
         '&:hover':{
-            backgroundColor: "#ff3542ff"
+            backgroundColor: "#007f59"
         },
     borderRadius: '1.2em'
     

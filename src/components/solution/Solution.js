@@ -28,26 +28,31 @@ const useStyles = makeStyles(() => ({
 
 const sols = [
     {
-      titre: "Mise à disposition de nos ressouces",
+      titre: "LA GESTION DES RESSOURCES HUMAINES",
       description: "Although cards can support multiple actions, UI controls, and an overflow menu, use restraint and remember that cards are entry points to more complex and detailed information.",
       image: "https://cdn.pixabay.com/photo/2014/05/02/21/50/home-office-336377__340.jpg",
-      items: ['Itérim', 'CDI intérimaire et CDI Temps partagé', 'Placement CDI, CDD', 'Intérim d\'insertion', 'Portage Salarial'],
+      items: [
+        "Mise à dispositions de personnels compétents",
+        "Gestion Administrative des missions et de l’agence",
+        "Gestion et contrôle de la paie",
+        "Gestion des risques liés aux personnels",
+        "Assurer le Suivi commercial et Technique du personnel RH",
+        "Œuvrer pour la politique de prévention des risques professionnels",
+        "Gérer l’accueil des Salariés intérimaires",
+        "Appliquer la législation du travail temporaire"
+      ],
       color: 'red'
       
     },
     {
-        titre: "Recretement",
+        titre: "LE RECRUTEMENT DU PERSONNEL POUR TOUT SECTEUR",
         description: "Although cards can support multiple actions, UI controls, and an overflow menu, use restraint and remember that cards are entry points to more complex and detailed information.",
         image: "https://cdn.pixabay.com/photo/2015/04/12/16/33/hammer-719066__340.jpg",
-        items: ['CDD','CDI', 'CDI Chantier', 'Stage', 'contrat de professionnalisation', 'Alternance'],
+        items: [
+          "Recruter des cadres de tout niveau selon vos besoins",
+          "Recruter des personnels de toutes qualifications pour votre entreprise"
+        ],
         color: 'blue'
-      },
-      {
-        titre: "Formation",
-        description: "Although cards can support multiple actions, UI controls, and an overflow menu, use restraint and remember that cards are entry points to more complex and detailed information.",
-        image: "https://cdn.pixabay.com/photo/2017/11/19/23/25/bmw-2964072__340.jpg",
-        items: ['Formation pratique', 'Formation initiale'],
-        color: 'yellow'
       }
       
 
@@ -64,7 +69,7 @@ const Sol = () => {
                  <Grid container spacing={3}>
                      {
                     sols.map(item =>(
-                        <Grid item xs={4}>
+                        <Grid item xs={6}>
                         <SolCard sol={item}/>
                   </Grid>
                     ))
