@@ -27,15 +27,13 @@ export default function Main(props) {
 
   return (
     <div className={classes.main}> 
-      
-       <Banner />
-       <AboutUs />
-       <Sectors />
-       <Prestations />
-       <Formations/>
-       <Jobs />
-       <GoogleApiWrapper />
-       <Footer />
+      <Header />
+      <Banner />
+      <MainInfo />
+      <AboutUs />
+      <Jobs/>
+      <Sectors />
+      <Footer />
     </div>
   );
 }

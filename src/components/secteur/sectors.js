@@ -1,82 +1,62 @@
 import React from 'react'
 import { makeStyles, Grid, Typography } from '@material-ui/core'
 import MainButton from '../buttons/MainButton';
-import Item from './item';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
 
-    root:{
-       margin: '0 auto',
-       marginTop: '180px',
+   root:{
     
-       width: '94%',
+       backgroundColor: "#D4F0F2DD",
+       padding: "2em",
+       alignContent: "center"
 
-    },
-    img: {
-        width: '100%'
-    },
-    text1: {
-        padding: '2em',
-        margin: '1.5em 0'
-    },
-    title: {
-        margin: '0 auto',
-        marginBottom: '1.5em',
-        fontSize: '36px',
-        fontWeight: '800',
+   },
+
+   list1:{
+     display: "flex",
+     listStyleType: "none",
+     margin: "0 auto",
+     
+   },
+   list2:{
+       marginTop: "5em",
+    display: "flex",
+    listStyleType: "none",
+    paddingBottom: "3em"
+  },
+
+   icon:{
+     marginTop: "2em",
+     marginBottom: "4em"
+   },
+   iconContainer:{
+    maxWidth: "80%",
+    margin: "0 auto"
+   },
+   
+
+   mr:{
+       marginRight: "4em"
+   },
+   mh:{
+       marginLeft: "8em",
+       marginRight: "4em",
+       [theme.breakpoints.down("md")]:{
+        marginLeft: "2em"
+       },
+       [theme.breakpoints.down('sm')]:{
         
+         marginLeft: "-1em"
+       }
 
-    }
+       
 
-
+   }
 
 }))
 
 
-const sectors = [
 
-{
-   title: "Médical, Pharmaceutique",
-   icon: "medical.png"
-},
-{
-    title: "Bâtiment, Travaux Publics",
-    icon: "bat.png" 
-},
-{
-    title: "Hôtellerie et Restauration",
-    icon: "hotel.png" 
-},
-{
-    title: "Banques et Assurances",
-    icon: "bank.png"
-},
-{
-    title: "Energie et Technologie",
-    icon: "tech.png"
-},
-{
-    title: "Télécommunication",
-    icon: "telecom.png"
-
-},
-{
-    title: "Transport et Logistique",
-    icon: "transport.png"
-},
-{
-    title: "Grande distribution",
-    icon: "dist.png"
-},
-{ 
-    title: "Manutention", 
-    icon: "muni.png"
-},
-{
-    title: "industrie", 
-    icon: "ind.png"
-}
-]
 
 const Sectors = () => {
 
@@ -84,17 +64,25 @@ const Sectors = () => {
 
         return (
             <div className={classes.root}>
-                   <Typography variant="h4" className={classes.title} >NOS SECTEURS D’INTERVENTION</Typography>
+                 
+                 
+               <ul className={classes.list1}>
+                   <li><img src={"car.png"}  className={classes.mh}/></li>
+                   <li><img src={"doctor.png"} className={classes.mr} /></li>
+                   <li><img src={"gear.png"} className={classes.mr} /></li>
+                   <li><img src={"hotel.png"} className={classes.mr} /></li>
+                   <li><img src={"money.png"} /></li>
+               </ul>
 
-                 <Grid container spacing={6}>
-                     
-                     {
-                         
-                       sectors.map(item => (<Grid item sm={6} ><Item sector={item} /></Grid>) )
-                     }
-                     
-                   
-                 </Grid>
+               <ul className={classes.list2}>
+                   <li><img src={"plane.png"} className={classes.mh} /></li>
+                   <li><img src={"bank.png"} className={classes.mr}/></li>
+                   <li><img src={"telecommunication.png"} className={classes.mr}/></li>
+                   <li><img src={"shop.png"} className={classes.mr}/></li>
+                   <li><img src={"urban.png"} /></li>
+               </ul>
+                
+                
             </div>
         )
     

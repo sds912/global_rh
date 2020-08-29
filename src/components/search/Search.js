@@ -1,16 +1,24 @@
 import React from 'react';
 import { makeStyles, Button, Grid, TextField, InputAdornment } from '@material-ui/core';
 
-import { GpsFixedOutlined, WorkOutlined} from '@material-ui/icons';
+import { SearchOutlined, PlaceOutlined} from '@material-ui/icons';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   root:{
       width: '80%',
-      height: '120px',
-      backgroundColor:'#000000',
+      height: '110px',
+
+      backgroundColor: "rgba(160, 160, 160, 0.548)",
       margin: '0px auto',
-      marginTop: '120px',
-      opacity:'.3'
+      marginTop: '96px',
+      [theme.breakpoints.down('md')]:{
+        marginTop: "120px"
+      },
+      [theme.breakpoints.down('sm')]:{
+        marginTop: "140px"
+        
+       }
+      
   },
   searchForm:{
     position:'absolute',
@@ -24,15 +32,16 @@ const useStyles = makeStyles(() => ({
 
   },
   btn:{
-    backgroundColor: 'red',
+    backgroundColor: '#1C5EAC',
     fontSize:'12px',
     color:'#ffffff',
      width: '100%',
      height: '48px',
      borderRadius:'0px',
      '&:hover':{
-       backgroundColor: 'red'
-     }
+       backgroundColor: '#1C5EAC'
+     },
+     opacity: 1
   },
   formFeild:{
     border: 'none',
@@ -56,7 +65,7 @@ const Search = () => {
     const classes = useStyles();
     
         return (
-          <React.Fragment>
+          <div className={classes.root}>
             <form className={classes.searchForm}>
               <Grid container spacing={6}>
                 <Grid item xs={5}>
@@ -69,7 +78,7 @@ const Search = () => {
                     
                     startAdornment: (
                       <InputAdornment position="start">
-                        <WorkOutlined />
+                        <SearchOutlined />
                       </InputAdornment>
                     ),
                   }}
@@ -87,23 +96,22 @@ const Search = () => {
                     
                     startAdornment: (
                       <InputAdornment position="start">
-                        <GpsFixedOutlined />
+                        <PlaceOutlined />
                       </InputAdornment>
                     ),
                   }}
                 />
                 </Grid>
-                <Grid item xs={4}>
-              <Button color='primary' className={classes.btn}>Consulter les offres d'emploies</Button>
+                <Grid item xs={1}></Grid>
+                <Grid item xs={3}>
+              <Button color='primary' className={classes.btn}>Recherche</Button>
 
                 </Grid>
 
               </Grid>
             </form>
-            <div className={classes.root}>
-                   
-            </div>
-          </React.Fragment>
+            
+          </div>
           
         )
 

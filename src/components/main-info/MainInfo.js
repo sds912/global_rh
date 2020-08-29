@@ -4,14 +4,26 @@ import Section1 from './section1';
 import Section2 from './section2';
 import Section3 from './section3';
 
-const useStyles = makeStyles( () =>({
+const useStyles = makeStyles( (theme) =>({
     root:{
-         margin: '8em 0'
+         margin: '8em 0',
+         marginTop: "500px",
+         backgroundColor: "#058BA3",
+         padding: "2.5em",
+         color: 'white',
+         
+        
     },
     title:{
-        fontSize: '26px',
-        fontWeight: '800',
-        marginBottom: '2em'
+        font: "Helvetica Neue",
+        fontSize: "36px",
+        color: "#FAFBFC",
+        opacity: 1,
+        marginBottom: "2em",
+        
+       
+
+       
     }
 }))
 
@@ -19,20 +31,19 @@ const MainInfo = () =>  {
     const  classes = useStyles();
     return (
         <div className={classes.root}>
-           <Typography className={classes.title}>Nos Solutions  RH</Typography>
+            <Typography className={classes.title}>3 bonnes raisons d'utiliser GRH</Typography>
             <Grid container >
-                <Grid item sm={6}>
+                <Grid item sm={4}>
                  <Section1 />
                 </Grid>
-                <Grid item sm={6}>
+                <Grid item sm={4}>
                   <Section2 />
                 </Grid>
-            </Grid>
-            <Grid container>
-             <Grid item sm={12}>
+                <Grid item sm={4}>
                  <Section3 />
              </Grid>
             </Grid>
+            
         </div>
     )
 }

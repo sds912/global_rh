@@ -5,45 +5,54 @@ import Search from '../search/Search';
 import SideButtons from '../buttons/SideButtons';
 
 
-const menus = [{
-    title: 'Le groupe',
-    url: ''
-},
-{
-    title: 'Entreprise',
-    url: ''
-},
-{
-    title: 'Candidat',
-    url: ''
-},
-{
-    title: 'Recreteur',
-    url: ''
-}
-]
+
 
 
 const useStyles = makeStyles((theme) => ({
   root: {
       width: '100%',
-      height: 'calc(100vh - 40px)',
-      backgroundImage:"url('https://cdn.pixabay.com/photo/2018/04/07/13/13/handshake-3298455_960_720.jpg')",
-      backgroundPosition:'center',
-      backgroundSize: 'cover',
-      backgroundRepeat: 'no-repeat'
+      top: "100px",
+    left: "0px",
+    height: "520px",
+    backgroundColor: "blue",
+    backgroundImage: "url('/680.png')",
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    position: "absolute"
+     
   },
 
-  mainText:{
-      marginTop: '40px',
-      color:'#ffffff',
-      fontSize: "36px",
-      fontWeight: '800'
+  title:{
+      color: "#020000",
+      textAlign: "left",
+        marginTop: "2.5em",
+        marginLeft: '1em',
+        font: "normal normal bold 42px Helvetica Neue",
+        letterSpacing: "0px",
+        color: "#020000",
+        opacity: 1,
+        [theme.breakpoints.down('md')]:{
+         fontSize: "36px"
+        },
+        [theme.breakpoints.down('sm')]:{
+          fontSize: "32px"
+         }
   },
-  subText:{
-      color: '#ffffff',
-      fontSize: '22px'
+  subTitle:{
+    textAlign: "left",
+    font: "normal normal normal 26px Helvetica Neue",
+    letterSpacing: "0px",
+    color: "#000000",
+    marginLeft: '1.5em',
+    marginTop: '-1em',
+    opacity: 1,
+    [theme.breakpoints.down('sm')]:{
+      fontSize: "18px"
+     }
   }
+
+
 } ));
 
 const Banner = ()  => {
@@ -51,11 +60,12 @@ const Banner = ()  => {
     const classes = useStyles();
     return (
         <div className={classes.root}> 
-            <Header sections={menus} title="global RH" />
-            <h2 className={classes.mainText}>Construisons ensemble votre travail.</h2>
-            <h5 className={classes.subText}>Nous avons forcément un travail pour vous.</h5>
-            <Search />
-            <SideButtons />
+
+         <h4 className={classes.title}>Construisons ensemble votre travail</h4>
+         <p className={classes.subTitle}>Nous avons forcément un travail pour vous</p>
+
+         <Search />
+            
         </div>
     )
 }

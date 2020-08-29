@@ -1,30 +1,36 @@
 import React from 'react'
 import { Typography, List, ListItemText, makeStyles, Button } from '@material-ui/core';
+import SearchSharpIcon from '@material-ui/icons/SearchSharp';
 
-const useStyles = makeStyles( () =>({
+
+const useStyles = makeStyles( (theme) =>({
     root:{
-        backgroundColor: '#FF9100',
-        maxWidth: '100%',
-        height: '320px',
-        padding: '1.5em',
-        paddingTop: '3em',
-        textAlign: 'center'
+     
+       
+        
+       
     },
     title: {
-        fontSize: '36px',
-        fontWeight: '800',
-        color: "#ffffff",
-        marginBottom: '1.5em'
+        fontFamily: "Helvetica Neue",
+        fontSize: "22px",
+        fontWeight: "bold",
+        textAlign: 'left',
     },
-    description:{
-        fontSize: '22px',
-        color: '#ffffff',
-        fontWeight: '600'
+    text:{
+        textAlign: 'left'
     },
-    btn:{
-        borderColor: '#ffffff',
-        color: "#ffffff",
-        marginTop: '2.8em'
+    icon:{
+        
+        fontSize: "76px",
+        marginBottom: "-0.5em",
+        marginRight: "3.5em",
+        [theme.breakpoints.down('md')]:{
+            marginRight:"2.5em"
+           },
+        [theme.breakpoints.down('sm')]:{
+    
+        marginLeft: ".3em"
+        }
     }
 
 }))
@@ -33,13 +39,12 @@ const Section3 = () =>  {
   const  classes = useStyles();
     return (
         <div className={classes.root}>
-             <Typography variant="h5" className={classes.title}>Entreprise nationale ou structure publique (Direction, Agence, Ministère, Office et
-Collectivités locales</Typography>
-             
-             <br />
-             <Button variant="outlined"  className={classes.btn} >
-                En Savoir Plus
-             </Button>
+             <SearchSharpIcon  className={classes.icon}/>
+
+             <h5 className={classes.title}>Chercher plus</h5>
+             <p className={classes.text}>
+             Vous avez un CV ? Grâce à son analyse, <br/>nous trouvons pour vous les offres <br/> d’emploi qui correspondent à votre <br/> profil.
+             </p>
         </div>
     )
 }

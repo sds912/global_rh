@@ -4,13 +4,19 @@ import Part1 from './part1'
 import Part2 from './part2'
 import Part3 from './part3'
 import Part4 from './part4'
+import TwitterIcon from '@material-ui/icons/Twitter';
+import FacebookIcon from '@material-ui/icons/Facebook';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
+
+
 
 const useStyles = makeStyles(() => ({
     root:{
-        backgroundColor: "#2a2a2a",
+        backgroundColor: "#04346E",
         color: "#ffffff",
        
         padding:'5em 0',
+        paddingBottom: "1em"
 
     }
 }))
@@ -21,19 +27,43 @@ const Footer  = () => {
         return (
             <div className={classes.root}>
                 <Grid container spacing={3}>
-                    <Grid item sm={3}>
+                    <Grid item sm={4}>
                         <Part1 />
                     </Grid>
-                    <Grid item sm={3}>
-                        <Part2 />
+                    <Grid item sm={1}>
+                        
                     </Grid>
-                    <Grid item sm={3}>
-                        <Part3 />
+                    <Grid item sm={7}>
+                        <Grid container>
+                         <Grid item sm={4}>
+                           <Part2 />
+                         </Grid>
+                         <Grid item sm={4}>
+                         <Part3 />
+
+                         </Grid>
+                         <Grid item sm={4}>
+                         <Part4 />
+
+                         </Grid>
+                        </Grid>
                     </Grid>
-                    <Grid item sm={3}>
-                        <Part4 />
-                    </Grid>
+                    
                 </Grid>
+                <p>
+                    <span style={{fontWeight: "500", fontFamily:"Helvetica Neue"}}>Retrouvez-nous sur les réseaux sociaux</span>
+                    <br/>
+                    <br/>
+                    <br/>
+
+                    <span>
+                        <TwitterIcon />
+                        <FacebookIcon />
+                        <LinkedInIcon />
+
+                    </span>
+
+                </p>
             </div>
         )
     

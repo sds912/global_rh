@@ -11,16 +11,9 @@ const useStyles = makeStyles( () =>({
 const Part2 = () =>  {
     const classes = useStyles();
     return (
-        <div>
-            <Typography variant="h4" className={classes.title}>Aller plus loin</Typography>
-             <List dense={true}>
-                  <ListItemText primary="Rejoindre Actual"/>
-                  <ListItemText primary="On parle de nous"/>
-                  <ListItemText primary="Mentions légales"/>
-                  <ListItemText primary="CGU"/>
-                  <ListItemText primary="Données personnelles"/>
-            </List>
-        </div>
+        <Typography variant="body2" style={{textAlign: "left"}}>
+            FAQ <br/> Services de conseil <br/> Conditions générales <br/>sQui sommes nous ?
+        </Typography>
     )
 }
 

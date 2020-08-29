@@ -6,30 +6,30 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
-import CardTravelIcon from '@material-ui/icons/CardTravel';
-import TrendingFlatIcon from '@material-ui/icons/TrendingFlat';
+import CalenderTodayIcon from '@material-ui/icons/CalendarToday';
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345,
+    maxWidth: 400,
 
-    backgroundColor: '#ffffff'
+    backgroundColor: '#ffffff',
+    
     
   },
   arrow:{
-    marginLeft: '2%',
+    marginLeft: '2%',  
     color: '#e56598',
     fontWeight: '800'
     
   },
   titre:{
     width: '100%',
-    height: '45px',
+    height: '220px',
     position: 'absolute',
     textAlign: 'center',
     backgroundColor: 'black',
-   opacity: '.5',
-    marginTop: '-4.1em',
+    opacity: '.3',
+    marginTop: '-16.65em',
     color: '#ffffff',
     padding: '.3em ',
     zIndex: '8'
@@ -39,16 +39,16 @@ const useStyles = makeStyles({
     opacity:'1', 
     color: "#ffffff", 
     position: 'absolute',
-    fontSize: '16px', 
-    fontWeight: '400',
+    fontSize: '18px', 
+    fontWeight: '800',
     marginTop: '-2.2em',
   marginLeft: '.5em'},
   icon:{
-    fontSize: '16px',
-    color: '#e56598'
+    fontSize: '22px',
+    color: '#A3A1A1'
   }
 });
-const  ImgMediaCard = (props) =>
+const  JobCard = (props) =>
 {
   const age = useState(45)
   const {job} = props;
@@ -59,16 +59,16 @@ const  ImgMediaCard = (props) =>
   
 
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} elevation={0.0}>
       <CardActionArea>
         <CardMedia
           component="img"
-          alt="Contemplative Reptile"
-          height="160"
+          alt={job.title}
+          height="220"
           image={job.image}
           title="Contemplative Reptile"
         />
-        <Typography gutterBottom variant="h5" component="h2" className={classes.titreText}> 
+          <Typography gutterBottom variant="h5" component="h2" className={classes.titreText}> 
             {job.titre}
           </Typography>
           
@@ -76,19 +76,16 @@ const  ImgMediaCard = (props) =>
         
         </div>
         <CardContent>
-          <Typography variant="body2" color="textSecondary" component="p" style={{textAlign: 'left'}}>
-            <LocationOnIcon className={classes.icon} /> {job.ville}
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p" style={{textAlign: 'left'}}>
-            <CardTravelIcon  className={classes.icon} /> {job.ville}
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p" style={{display:'flex'}}>
-            <span style={{marginLeft: '60%', color: '#e56598'}} >Description</span> <TrendingFlatIcon className={classes.arrow} /> 
-          </Typography>
+            <span   style={{float: "left", fontWeight: "800", fontSize: "18px"}}>
+              <LocationOnIcon className={classes.icon} /> {job.ville}
+            </span>
+            <span style={{ fontWeight: "800", fontSize: "18px"}}>
+              <CalenderTodayIcon  className={classes.icon} /> {job.addedAt}
+            </span>
         </CardContent>
       </CardActionArea>
     </Card>
   );
 }
 
-export default ImgMediaCard;
+export default JobCard;

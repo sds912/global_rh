@@ -1,26 +1,47 @@
 import React from 'react'
-import { Typography, List, ListItemText, makeStyles } from '@material-ui/core';
+import {  makeStyles } from '@material-ui/core';
+import AppleIcon from '@material-ui/icons/Apple';
+import AndroidRoundedIcon from '@material-ui/icons/AndroidRounded';
+
 
 const useStyles = makeStyles( () =>({
-    title:{
-        fontSize: '22px',
-        marginBottom: '1em'
+    root:{
+    },
+    logo:{
+        width: "400px",
+        marginLeft: "-4em",
+        marginTop: "-5em"
+    },
+    appBtn:{
+        backgroundColor: "black !important",
+        color: "white",
+        border: "none",
+        padding: ".5em 1.5em",
+        marginTop: "2em",
+        borderRadius: "16px",
+        outline: "none",
+        cursor: "pointer",
+        
     }
 }))
 
 const Part1 = () =>  {
   const  classes = useStyles();
     return (
-        <div>
-            <Typography variant="h4" className={classes.title}>A Propos</Typography>
-             <List dense={true}>
-                  <ListItemText primary="Rejoindre Actual"/>
-                  <ListItemText primary="On parle de nous"/>
-                  <ListItemText primary="Mentions légales"/>
-                  <ListItemText primary="CGU"/>
-                  <ListItemText primary="Données personnelles"/>
-              
-            </List>
+        <div className={classes.root}>
+            <img  src="/logo-global-rh-version-blanc.png" className={classes.logo} />
+            <p style={{marginTop: "-4em", fontWeight: "bold"}}>GRH est aussi disponible sur </p>
+            <button className={classes.appBtn} style={{marginRight: "2.5em"}}>
+                <AppleIcon fontSize="small"  />
+                <span >App Store</span>
+            </button>
+            <button className={classes.appBtn}>
+                <AndroidRoundedIcon fontSize="small" />
+                <span>Google Play</span>
+            </button>
+
+
+
         </div>
     )
 }

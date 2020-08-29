@@ -1,30 +1,30 @@
 import React from 'react'
 import { Typography, List, ListItemText, makeStyles, Button } from '@material-ui/core';
+import AccessAlarmIcon from '@material-ui/icons/AccessAlarm';
 
-const useStyles = makeStyles( () =>({
+const useStyles = makeStyles( (theme) =>({
     root:{
-        backgroundColor: '#D84315',
-        maxWidth: '100%',
-        height: '220px',
-        padding: '1.5em',
-        paddingTop: '3em',
-        textAlign: 'center'
+     
+        
+       
     },
     title: {
-        fontSize: '36px',
-        fontWeight: '800',
-        color: "#ffffff",
-        marginBottom: '1.5em'
+        fontFamily: "Helvetica Neue",
+        fontSize: "22px",
+        fontWeight: "bold",
+        textAlign: 'left',
     },
-    description:{
-        fontSize: '22px',
-        color: '#ffffff',
-        fontWeight: '600'
+    text:{
+        textAlign: 'left'
     },
-    btn:{
-        borderColor: '#ffffff',
-        color: "#ffffff",
-        marginTop: '2.8em'
+    icon:{
+        
+        fontSize: "76px",
+        marginBottom: "-0.5em",
+        marginRight: "3em",
+        [theme.breakpoints.down('md')]:{
+            marginRight:"2em"
+           }
     }
 
 }))
@@ -33,11 +33,11 @@ const Section2 = () =>  {
   const  classes = useStyles();
     return (
         <div className={classes.root}>
-             <Typography variant="h5" className={classes.title}>ONG et Association ;</Typography>
-             <br />
-             <Button variant="outlined"  className={classes.btn} >
-                En Savoir Plus
-             </Button>
+             <AccessAlarmIcon  className={classes.icon}/>
+              <h5 className={classes.title}>Gagnez du temps</h5>
+           <p className={classes.text}>
+           GRH regroupe pour vous toutes les <br/> offres du marché, quel que soit le  <br/> secteur ou le type de poste que vous <br/> visez
+           </p>
         </div>
     )
 }
