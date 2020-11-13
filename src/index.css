@@ -1,19 +1,14 @@
-:root{
-  --mainBlue: '#20639B';
-  --lightGray: '#DCDCDC'
+:root {
+  --mainBlue: #008ba6;
+  --lightGray: #dcdcdc;
 }
 
-
-  html, body {
-    max-width: 100%;
-    overflow-x: hidden;
-    margin: 0;
-    padding: 0;
-    background-color: #f6f6f6
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  background-color: #f6f6f6;
+  font-family: Arial, Helvetica, sans-serif;
 }
-
-
-
-
-
-

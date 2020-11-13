@@ -7,7 +7,7 @@ import Section3 from './section3';
 const useStyles = makeStyles( (theme) =>({
     root:{
          margin: '8em 0',
-         marginTop: "500px",
+         marginTop: "520px",
          backgroundColor: "#058BA3",
          padding: "2.5em",
          color: 'white',
