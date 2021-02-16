@@ -7,10 +7,8 @@ import Detail from "../detail/Detail";
 import AboutUs from "../../components/about-us/AboutUs";
 import * as ROUTES from "../../constants/routes";
 import Welcome from "../SignUp/Welcome";
-import SignUpPage from "../../components/forms/SignUpForm";
 import { Component } from "react";
 import firebase from "firebase";
-import Msignup from "../SignUp"
 import {
   withAuthentication,
   AuthUserContext,
@@ -26,6 +24,7 @@ import GuardedRoute from './GuardedRoute';
 import BackOffice from "../backOffice";
 import MySearch from "../MyResearch";
 import ListPost from '../backOffice/listPost';
+import SignUpPage from "../SignUp";
 
 
 
@@ -82,13 +81,12 @@ class App extends Component {
           <AuthUserContext.Provider value={this.state.authUser}>
             <Switch>
               <Route exact path={ROUTES.MAIN} component={Main} />
-              <Route exact path={ROUTES.SIGN_UP} component={Msignup} />
               <Route exact path={ROUTES.RESULT} component={SearchResult} />
               <Route exact path={ROUTES.SIGN_IN} component={SignInPage} />
               <Route exact path={ROUTES.DETAIL} component={Detail} />
               <Route exact path={ROUTES.ABOUT_US} authUser={this.state.authUser} component={AboutUs} />
               <Route exact path={ROUTES.WELCOME} component={Welcome} />
-              <Route exact path={ROUTES.EMAIL_SINGUP} component={SignUpPage} />
+              <Route exact path={ROUTES.SIGN_UP} component={SignUpPage} />
               <Route exact path={ROUTES.DEPOSIT_CV} component={DepositCV} />
               <GuardedRoute exact path={ROUTES.ACCOUNT} component={AccountPage} auth={this.state.authUser} />
               <Route exact path={ROUTES.MY_OFFER} component={SavedOffer} />

@@ -24,11 +24,11 @@ import {
   isBrowser,
   isMobile
 } from "react-device-detect";
+import { Container } from "react-bootstrap";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: "90%",
-    margin: "0 auto",
+    margin: "2em auto",
     [theme.breakpoints.down("md")]: {
       width: "90%",
       marginTop: ".5em",
@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
 
   buttonBack: {
     position: "absolute",
-    top: "20%",
+    top: "50%",
     left: "-8em",
     outline: "none",
     border: "none",
@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
 
   buttonNext: {
     position: "absolute",
-    top: "20%",
+    top: "50%",
     right: "-8em",
     outline: "none",
     border: "none",
@@ -61,6 +61,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   btn: {
+    marginTop: "1em",
     color: "#FAB0B0",
     textTransform: "none",
     fontWeight: "bold",
@@ -76,15 +77,16 @@ const Jobs = () => {
   return (
 
     
-    <div className={classes.root}>
+    <Container  className={classes.root}>
       <CarouselProvider
         visibleSlides={isMobile ? 1 : 3}
         totalSlides={posts.length}
         step={isMobile ? 1 : 3}
         naturalSlideWidth={400}
-        naturalSlideHeight={300}
+        naturalSlideHeight={380}
       >
         <div className={classes.container}>
+          <h5 className="text-center my-3 h3">Offres d'emploies</h5>
           <Slider className={classes.slider}>
             {posts.map((item, index) => {
               return (
@@ -120,7 +122,7 @@ const Jobs = () => {
       >
         Voir plus d'offres d'emploies
       </Button>
-    </div>
+    </Container>
   );
 };
 

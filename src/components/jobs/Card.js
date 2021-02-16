@@ -12,8 +12,8 @@ import { useHistory } from "react-router-dom";
 const useStyles = makeStyles({
   root: {
     maxWidth: "100%",
-
-    backgroundColor: "#ffffff",
+    maxHeight: "360px",
+    backgroundColor: "#f8f8f8",
   },
   arrow: {
     marginLeft: "2%",
@@ -35,10 +35,10 @@ const useStyles = makeStyles({
   titreText: {
     zIndex: "1080",
     opacity: "1",
-    color: "#ffffff",
+    color: "#C40556",
     position: "absolute",
-    fontSize: "18px",
-    fontWeight: "800",
+    fontSize: "20px",
+    fontWeight: "600",
     marginTop: "-2.2em",
     marginLeft: ".5em",
     
@@ -70,7 +70,7 @@ const JobCard = (props) => {
         <CardMedia
           component="img"
           alt={post?.title}
-          height="220px"
+          height="180px"
           image={post?.image}
         />
         <Typography

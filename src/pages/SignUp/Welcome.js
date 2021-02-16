@@ -1,10 +1,10 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Button, Grid } from "@material-ui/core";
+import {  Grid } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
-import { MAIN, SIGN_IN } from "../../constants/routes";
+import { DEPOSIT_CV, EMAIL_SINGUP, MAIN, SIGN_UP} from "../../constants/routes";
 import { withFirebase } from "../../Firebase";
-import Main from "../main/Main";
+import { SignInForm44 } from "../SignIn";
 
 const useStyles = makeStyles((theme) => ({
   main: {
@@ -69,7 +69,7 @@ const Welcome = (props) => {
   return (
     <div className={classes.main}>
       <Grid container>
-        <Grid item sm={5}>
+        <Grid item md={5} sm={12} >
           <div className={classes.panel}>
             <span
               onClick={() => {
@@ -87,76 +87,17 @@ const Welcome = (props) => {
             </span>
             <div className={classes.main}>
               <h4 className={classes.title}>
-                Inscrivez-vous pour <br /> continuer
+                Connectez-vous pour <br /> continuer
               </h4>
-              <p className={classes.tif}>C'est Simple et Rapide</p>
 
-              <span
-                className={classes.btn}
-                onClick={() => {
-                  props.firebase
-                    .doSignInWithGoogle()
-                    .then((res) => {
-                      history.push({
-                        pathname: MAIN,
-                      });
-                    })
-                    .catch((error) => {
-                      console.log(error.message);
-                    });
-                }}
-              >
-                <img
-                  src="/google.png"
-                  alt=""
-                  style={{ float: "left", marginTop: "-.5em" }}
-                />
-                Continue sur Google
-              </span>
-
-              <span
-                className={classes.btn}
-                style={{ backgroundColor: "#4953bc", color: "#ffffff" }}
-                onClick={() => {
-                  props.firebase
-                    .doSignInWithFacebook()
-                    .then((res) => {
-                      history.push({
-                        pathname: MAIN,
-                      });
-                    })
-                    .catch((error) => {
-                      console.log(error.message);
-                    });
-                }}
-              >
-                <img
-                  src="/facebook.png"
-                  alt=""
-                  style={{ float: "left", marginTop: "-.5em" }}
-                />
-                Continue sur Facebook
-              </span>
-              <div style={{ margin: "2em 0", textAlign: "center" }}>OU</div>
-              <span
-                className={classes.btn}
-                onClick={() =>
-                  history.push({
-                    pathname: SIGN_IN,
-                  })
-                }
-              >
-                <img
-                  src="/email.png"
-                  alt=""
-                  style={{ float: "left", marginTop: "-.4em" }}
-                />
-                Inscription par Email
-              </span>
+               <SignInForm44 />
+               <p>vous n'êtes pas encore inscrit ? <span className="text-info" style={{cursor: "pointer"}} onClick={ () => {
+                 history.push(SIGN_UP)
+               }} >S'inscrire</span></p>
             </div>
           </div>
         </Grid>
-        <Grid item sm={7}>
+        <Grid item  md={7}>
           <div className={classes.banner}></div>
         </Grid>
       </Grid>

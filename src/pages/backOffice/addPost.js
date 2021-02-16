@@ -54,7 +54,7 @@ const workTypes = [
 
 export default function AddPost() {
   const [file, setFile] = useState(null);
-  const [url, setUrl] = useState("https://firebasestorage.googleapis.com/v0/b/global-rh.appspot.com/o/images%2Fe%CC%81le%CC%81ment-2%402x.png?alt=media&token=c36c13a3-1b6a-48bc-bc2d-51e72100ead4")
+  const [url, setUrl] = useState("https://cdn.jobmonkey.com/wp-content/uploads/2016/12/irresistible-job-offer-dp-300x250.jpg")
   const [description, setDescription] = useState();
   const db = firebase.firestore();
   const history = useHistory()

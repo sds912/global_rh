@@ -59,7 +59,7 @@ const Prestations = () => {
     const classes = useStyles();
 
         return (
-            <div className="container-fluid p-0 mb-5">
+            <div className="container-fluid p-0">
                <div className="row">
                <div className="col-sm-6">
                    <div className={classes.video}>
@@ -70,6 +70,7 @@ const Prestations = () => {
                    </div>
                </div>
                <div className="col-sm-6 px-4">
+                   <div style={{marginTop: "3em"}} />
                    <p className={classes.title}>Qui sommes-nous ?</p>
                    <p className={classes.description}>
                     GLOBAL RH est un Cabinet d'intérim, de <br />

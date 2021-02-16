@@ -1,4 +1,4 @@
-import React,{ useContext } from 'react'
+import React,{ useContext, useState } from 'react'
 import Header from '../../components/header/Header';
 import SearchMenu from '../../components/search-menu/SearchMenu';
 import SavedItem from './savedItem';
@@ -7,7 +7,13 @@ import PostContext from '../../Session/postContext';
 
 const SavedOffer  = (props) => {
   const { posts } = useContext(PostContext);
+  const key = "mySearch";
+  const initLiked = localStorage.getItem(key)
+  const [liked, setLiked]  = useState(initLiked);
 
+  const filterResult = (postslist) =>{
+      return postslist.filter((item) => liked.includes(item.id))
+  }
 
     return (<div>
            <Header />
@@ -23,7 +29,7 @@ const SavedOffer  = (props) => {
                 </div>
                 <div className="container-fluid">
                    {
-                       posts.map((post, index) => {
+                       filterResult(posts).map((post, index) => {
                            return <SavedItem index={index} post={post} />
                        })
                    }

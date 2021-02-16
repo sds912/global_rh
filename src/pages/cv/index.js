@@ -5,7 +5,8 @@ import { AuthUserContext } from "../../Session";
 import { useHistory, useLocation } from "react-router-dom";
 import  firebase  from 'firebase';
 import Footer from "../../components/footer/Footer";
-import { RESULT, MAIN } from '../../constants/routes';
+import { Container, Row, Col } from "react-bootstrap";
+import CandidateForm from "../../components/forms/CandidatForm";
 
 const useStyles = makeStyles((theme) => ({
   banner: {
@@ -122,95 +123,35 @@ const DepositCV = () => {
   return (
 
     <>
-    <div>
-      <Header />
-      <div className={classes.body}>
-        <div className="row">
-          <div className="col-sm-6" >
-           <img src="/relaxe.png" width="60%"  />
-          </div>
-          <div className="col-sm-6 mt-5">
+    
+     <Header />
+     <Container>
+       <Row>
+         <Col sx="12">
+            <h2 className="text-center py-4">Laissez les recruteurs vous trouver !</h2>
+         </Col>
+       </Row>
+       <Row>
+         <Col  md="6">
+           <div
+            style={{
+              width: "100%",
+              height: "calc(100vh - 200px)",
+              backgroundImage:'url("/relaxe.png")',
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "full",
+              backgroundSize: "100%"
+             }}
+           >
 
-            <div className={classes.title} >
-
-            <h5>Marre de chercher ? <br /> Laissez les recruteurs vous trouver !</h5>
-            </div>
-            <div className={classes.main}>
-
-              <h6  style={{
-                fontSize: "18px",
-                fontWeight: "400",
-                marginLeft: "1.3em",
-                marginBottom: "-.2em"
-              }}>Télécherger votre CV sur GRH pour :</h6>
-              <ul style={{
-                lineHeight: "180%"
-              }}>
-                <li>Être visible auprés des recruteurs</li>
-                <li>Postuler aux offres d'emploi en quelques clics</li>
-                <li>Postuler depuis votre mobile</li>
-              </ul>
-              
-            </div>
-             
-             <div style={{
-               textAlign: "left",
-               margin: "1.5em 0 -2em 10%",
-               lineHeight: "80%",
-               fontSize: "12px"
-
-             }}>
-             <p>* Formats acceptés: <span>fichier texte doc, docx, pdf, rtf, txt; 5Mo max.</span></p>
-              
-             </div>
-     
-              <div className="btn p-0 btn-block ">
-                <label
-                  className={classes.btn}
-                  for="upload"
-                  
-                >
-                  <img
-                    src="/computer.png"
-                    alt=""
-                    style={{ float: "left", marginTop: "-.4em" ,  height: "26px"}}
-                  />
-                  <input id="upload" type="file" hidden  onChange={(e) => onChangePicture(e)} />
-                  
-                  {
-                    picture !== null ? picture.name : "Télécharger via mes documents"
-                  }
-                </label>
-              </div>
-              {
-                loading ? <img src="/logo/ajax-loading-big.gif" height="80px" style={{marginTop: "-2em"}} /> : '' 
-              }
-
-              {
-                done ? <img src="/logo/success.gif" height="80px" style={{marginTop: "-2em"}} /> : ''
-              }
-             {
-               done ? <div className="row px-5">
-                <div className="col-sm-6">
-                  <button 
-                  style={{outline: "none", border: "0", cursor: "pointer", padding: ".5em 1.5em",backgroundColor: "#058BA3", color: "#ffffff"}}
-                  onClick={() => history.push(MAIN)}>
-                    Retour sur la page d'acceuil
-                  </button>
-                </div>
-                <div className="col-sm-6 ">
-                  <button 
-                  style={{outline: "none", border: "0", cursor: "pointer", padding: ".5em 1.5em", backgroundColor: "#d2004e", color: "#ffffff"}}
-                  onClick={() => history.push(RESULT)}>
-                    Consulter les offres
-                  </button>
-                </div>
-              </div> : ''
-            }
-          </div>
-        </div>
-      </div>
-    </div>
+           </div>
+         </Col>
+         <Col sm="12" md="6" className="my-5">
+           <CandidateForm />
+         </Col>
+       </Row>
+     </Container>
+      
     <Footer />
     </>
   );

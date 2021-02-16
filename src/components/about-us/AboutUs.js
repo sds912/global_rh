@@ -3,6 +3,7 @@ import { makeStyles, Grid } from "@material-ui/core";
 import Header from "../header/Header";
 import CardInfo from "./cardInfo";
 import MainButton from "../buttons/MainButton";
+import Footer from "../footer/Footer";
 
 const sector1 = {
   title: "Nos secteurs d'intervention",
@@ -240,6 +241,7 @@ const AboutUs = () => {
           <MainButton title="Envoyer" color="#d1004e" />
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

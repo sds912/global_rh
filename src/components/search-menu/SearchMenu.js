@@ -44,14 +44,6 @@ const SearchMenu = (props) => {
         mr="0 0.8em 0 0"
       />
 
-      <CustomBtn
-        bg={props.page != 'saved'? inactivebg : activebg}
-        text="MES RECHERCHES ENREGISTREES"
-        action={() => {
-          history.push('/my-research')
-          
-        }}
-      />
     </div>
   );
 };

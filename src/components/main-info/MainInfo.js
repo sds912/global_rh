@@ -10,7 +10,7 @@ const useStyles = makeStyles( (theme) =>({
          backgroundColor: "#058BA3",
          padding: "2.5em",
          color: 'white',
-         marginBottom: "2em"
+         //marginBottom: "2em"
          
         
     },
@@ -31,6 +31,7 @@ const MainInfo = () =>  {
     const  classes = useStyles();
     return (
         <div className={classes.root}>
+            
             <Typography className={classes.title}>3 bonnes raisons d'utiliser GRH</Typography>
             <div className="row">
             <div className="col-sm-4">

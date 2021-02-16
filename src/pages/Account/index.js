@@ -3,7 +3,7 @@ import React,{useState} from "react";
 import Header from "../../components/header/Header";
 import SearchMenu from '../../components/search-menu/SearchMenu';
 import Footer from '../../components/footer/Footer';
-
+import  PDF  from 'react-pdf-js';
 
 const useStyle = makeStyles((theme)=>({
   title: {
@@ -28,19 +28,29 @@ const useStyle = makeStyles((theme)=>({
 
 
 const AccountPage = (props) =>  {
-  const [post, setPost] = useState();
+
   const classes = useStyle()
     return (
     <>
     <Header />
     <SearchMenu page="account" />
+   
+
+    <div style={{overflow:'scroll',height:600}}>
+   
+            <PDF file="http://www.africau.edu/images/default/sample.pdf" />
+    </div>
     <div className='container mb-5' style={{textAlign: "left"}}>
        <div className="row">
          <div className="col-sm-2 " style={{textAlign:"left"}}>
            <div style={{width: "160px", marginTop: "2em", marginBottom: "-2em"}}>
              <img src="/avatar.png" className="img-fluid" />
            </div>
-           <button className="btn btn-block text-white" style={{backgroundColor:"#008ba6", borderRadius: "none !important"}}>
+           <button 
+           className="btn text-white" 
+           style={{backgroundColor:"#008ba6", 
+           width: "120px",
+           borderRadius: "none !important"}}>
              Télécharger
 
            </button>

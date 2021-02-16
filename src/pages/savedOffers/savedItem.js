@@ -1,25 +1,17 @@
 import React from 'react'
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import { Divider } from '@material-ui/core';
-import Firebase from 'firebase'
-import { useHistory } from 'react-router-dom';
+
 
 
 const SavedItem  = (props) => {
-
-    const db = Firebase.firestore()
-    const history = useHistory()
-
-
-    const onDelete = (id) => {
-
-        try {
-            
-        } catch (error) {
-            
-        }
+    const onDelete = (idToRemove) => {
+        const key = "mySearch";
         window.confirm('Souhaitez-vous vraiement supprimer cet offre ?')
-        db.collection('posts').doc(id).delete().then(() => console.log('ok deleted'))
+        let liked = localStorage.getItem(key);
+        let newValue = liked.replace(`#${idToRemove}`,'');
+        localStorage.setItem(key, newValue);
+        window.location.reload();
     }
 
     const {address, title, city, organisation,id } = props.post

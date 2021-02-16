@@ -6,7 +6,6 @@ import { DEPOSIT_CV } from "../../constants/routes";
 import { Nav, Navbar } from "react-bootstrap";
 import MainButton from "../buttons/MainButton";
 import UserAvatar from '../buttons/DropMenu';
-import SearchBar from './SearchBar';
 import {isBrowser} from 'react-device-detect'
 
 const useStyles = makeStyles((theme) => ({
@@ -44,7 +43,14 @@ const Header = (props) => {
   <Navbar.Collapse id="responsive-navbar-nav">
    <div className="ml-auto">
    <Nav >
-      <Nav.Link className="align-middle"><SearchBar /></Nav.Link>
+      <Nav.Link className="align-middle mt-3" onClick={() => {
+            history.push("/result");
+          }}>
+       Offres d'emploi
+      </Nav.Link>
+      {
+            isBrowser ? <div className={classes.divider} style={{ margin:"28px 4px 0 4px" }}></div>: ''
+      }
       <Nav.Link className="align-middle mt-3" onClick={() => {
             history.push("/candidate");
           }} >Je suis candidat</Nav.Link >
