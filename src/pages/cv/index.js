@@ -128,7 +128,7 @@ const DepositCV = () => {
      <Container>
        <Row>
          <Col sx="12">
-            <h2 className="text-center py-4">Laissez les recruteurs vous trouver !</h2>
+            <h2 className="text-center py-4" style={{fontSize: "26px"}}>Laissez les recruteurs vous trouver !</h2>
          </Col>
        </Row>
        <Row>

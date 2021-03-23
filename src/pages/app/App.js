@@ -45,7 +45,6 @@ const searchData = async (job = "", city = "") => {
 class App extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       authUser: null,
       posts: [],
@@ -56,12 +55,18 @@ class App extends Component {
   
 
   componentDidMount() {
-    this.listener = this.props.firebase.auth.onAuthStateChanged((authUser) => {
-      authUser
-        ? this.setState({ authUser })
-        : this.setState({ authUser: null });
-    });
-
+    let cuser = localStorage.getItem("currentUser");
+    if(cuser){
+      this.setState({authUser: cuser})
+    }else{
+      this.listener = this.props.firebase.auth.onAuthStateChanged((authUser) => {
+        authUser
+          ? this.setState({ authUser })
+          : this.setState({ authUser: null });
+      });
+    }
+   
+     console.log(this.authUser);
     const db = firebase.firestore();
     return db.collection("posts").onSnapshot((snapshot) => {
       const posts = [];

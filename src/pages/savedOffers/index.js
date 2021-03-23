@@ -12,7 +12,7 @@ const SavedOffer  = (props) => {
   const [liked, setLiked]  = useState(initLiked);
 
   const filterResult = (postslist) =>{
-      return postslist.filter((item) => liked.includes(item.id))
+      return postslist.filter((item) => liked?.includes(item.id))
   }
 
     return (<div>

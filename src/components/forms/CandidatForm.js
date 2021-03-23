@@ -5,6 +5,9 @@ import { useForm} from "react-hook-form";
 import data from "./countries.json";
 import firebase  from 'firebase';
 import { CircularProgress } from "@material-ui/core";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useHistory } from "react-router";
 
 
 
@@ -15,6 +18,9 @@ const [ cities, setCities ] = useState(datas['0']["Senegal"]);
 const [loading, setLoading] = useState(false);
 const [ countries, setCountries ] = useState(Object.keys(datas['0'])); 
 const [fileName, setFileName] = useState();
+const [confirm, setConfirm] = useState(true);
+const history = useHistory();
+
 
 
 
@@ -26,10 +32,18 @@ const [fileName, setFileName] = useState();
     setCities(datas['0'][country]);
    }
 
+   
+
   const onSubmit = async (formData) => {
-    console.log(formData);
-    let cvFile = formData.cv[0];
+    if(formData['password'] != formData['confirm']){
+      setConfirm(false);
+    }else{
+      setConfirm(true);
+      let cvFile = formData.cv[0];
    await handleUpload(cvFile, formData);
+
+    }
+    
 
   
     
@@ -37,9 +51,10 @@ const [fileName, setFileName] = useState();
 
   const handleChange = (e) => {
    setFileName(e.target.files[0].name);
+
   }
 
-
+  
   const handleUpload = async (file, formData) => {
     setLoading(true);
     const uploadTask = firebase.storage().ref(`cvs/${file.name}`).put(file);
@@ -59,10 +74,24 @@ const [fileName, setFileName] = useState();
           .child(file.name)
           .getDownloadURL().then((url) => {
             formData['cv'] = url;
-            firebase.firestore().collection('candidature').add(formData).then((res) => {
-              setLoading(false);
-              reset();
-            })
+
+            firebase.auth().createUserWithEmailAndPassword(formData.email, formData.password)
+              .catch((error) => {
+                     console.log(error)
+                     toast('Ce mail exist déjà')
+              })
+              .then((ress) => {
+                console.log(ress)
+                formData['uid'] =ress.user.uid
+                firebase.firestore().collection('candidature').add(formData).then((res) => {
+                  setLoading(false);
+                  history.push(`/account/${ress.user.uid}`)
+                }).catch((error) => {
+                  console.log(error)
+                })
+                
+              })
+            
           })
           
           
@@ -130,6 +159,29 @@ const [fileName, setFileName] = useState();
             />
             {errors.phone && <span style={styles}>Le champ Téléphone est requis</span>}
         </div>
+        <div className="form-group">
+            <label>Mot de passe</label>
+            <input
+            name="password"
+            type="password"
+            className="form-control"
+            ref={register({required: true })}
+            />
+            {errors.phone && <span style={styles}>Entrer votre mot de passe</span>}
+            {confirm == false ?  <span style={styles}>Les mots de passe ne correspondent pas</span> : ""}
+
+        </div>
+        <div className="form-group">
+            <label>Confimer votre mot de passe</label>
+            <input
+            name="confirm"
+            type="password"
+            className="form-control"
+            ref={register({required: true })}
+            />
+            {errors.phone && <span style={styles}>Confirmer votre mot de passe</span>}
+            {confirm == false ?  <span style={styles}>Les mots de passe ne correspondent pas</span> : ""}
+        </div>
         
         <div className="form-group">
             <label>Pays</label>
@@ -148,7 +200,7 @@ const [fileName, setFileName] = useState();
         </div>
 
         <div className="form-group">
-            <label></label>
+            <label>Ville</label>
             <select
             name="city"
             type="text"
@@ -169,6 +221,7 @@ const [fileName, setFileName] = useState();
          
         </button>
       </form>
+      <ToastContainer />
     </>
   );
 }

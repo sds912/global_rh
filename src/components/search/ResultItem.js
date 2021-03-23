@@ -40,7 +40,7 @@ const ResultItem = (props) => {
  
   const isLiked = (id) =>  {
     let state = false
-    if(liked.includes(id)){
+    if(liked?.includes(id)){
       state = true;
     }
     return state;

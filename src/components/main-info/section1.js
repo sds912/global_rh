@@ -22,10 +22,8 @@ const useStyles = makeStyles( (theme) =>({
     icon:{
         
         fontSize: "76px",
-        marginRight: "2.5em",
-        [theme.breakpoints.down('md')]:{
-         margin:"0 1.3em 0.3em 0"
-        }
+        marginRight: "58%"
+        
     }
 
 }))
@@ -34,8 +32,7 @@ const Section1 = () =>  {
   const  classes = useStyles();
     return (
         <div className={classes.root}>
-             <DraftsIcon  className={classes.icon}/>
-            
+            <DraftsIcon  className={classes.icon}/>
            <h5 className={classes.title}>Ne ratez aucune offres</h5>
            <p className={classes.text}>
            Soyez alerté par email dès qu’une <br/> nouvelle offre d’emploi correspond à  <br/>votre profil

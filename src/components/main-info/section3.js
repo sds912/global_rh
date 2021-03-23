@@ -22,11 +22,8 @@ const useStyles = makeStyles( (theme) =>({
     icon:{
         
         fontSize: "76px",
-        marginRight: "2.5em",
-        [theme.breakpoints.down('md')]:{
-            margin:"0 1.3em 0.3em 0"
-
-           },
+        marginRight: "64%"
+        
       
     }
 

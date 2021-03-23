@@ -7,13 +7,16 @@ import SideButtons from "../buttons/SideButtons";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
-    height: "100vh",
+    height: "70%",
     backgroundColor: "blue",
     backgroundImage: "url('/680.png')",
     backgroundPosition: "center",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     position: "relative",
+    [theme.breakpoints.down("md")]: {
+      height: "80%",
+    },
 
   },
 

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { makeStyles, Grid, Typography, Button } from "@material-ui/core";
+import React from "react";
+import { makeStyles, Button } from "@material-ui/core";
 import JobCard from "./Card";
 import {
   CarouselProvider,
@@ -7,24 +7,19 @@ import {
   Slide,
   ButtonBack,
   ButtonNext,
-  ImageWithZoom,
-  DotGroup,
 } from "pure-react-carousel";
 import "pure-react-carousel/dist/react-carousel.es.css";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
-import firebase from "firebase";
 import { useContext } from "react";
 import { PostContext } from "../../Session";
 import { useHistory } from "react-router-dom";
-import { DETAIL, RESULT } from "../../constants/routes";
+import { RESULT } from "../../constants/routes";
 import {
-  BrowserView,
-  MobileView,
-  isBrowser,
   isMobile
 } from "react-device-detect";
 import { Container } from "react-bootstrap";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {

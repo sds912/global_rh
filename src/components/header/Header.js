@@ -46,7 +46,7 @@ const Header = (props) => {
       <Nav.Link className="align-middle mt-3" onClick={() => {
             history.push("/result");
           }}>
-       Offres d'emploi
+       Offres d'emploies
       </Nav.Link>
       {
             isBrowser ? <div className={classes.divider} style={{ margin:"28px 4px 0 4px" }}></div>: ''

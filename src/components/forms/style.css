@@ -11,14 +11,15 @@
 
 
 .btn {
-    margin: 3em auto;
     display: block;
-    width: 320px;
-    padding: 1.2em .5em;
+    width: 240px;
+    padding: .8em .4em;
     border: 1px solid #cfcfcf;
     border-radius: 4px;
-    font-size: 12px;
+    font-size: 16px;
     background-color: #3bc0f5;
     cursor: pointer;
     color: #ffffff;
+    float: right;
+    margin-top: 2em;
 }

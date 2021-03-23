@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     backgroundColor: "#d4d4d4a4",
     marginTop: "25em",
-    padding: "2em 0"
+    padding: "2em 1em"
   },
  
   btn: {
@@ -38,9 +38,7 @@ const useStyles = makeStyles((theme) => ({
     outline: "none",
     backgroundColor: "#ffffff",
     padding: "0 .5em",
-    [theme.breakpoints.down("sm")]:{
-      margin: "1em 0"
-    }
+    
    
   },
  
@@ -75,11 +73,8 @@ const Search = (props) => {
 
   return (
     <div className={classes.root}>
-        <div className="container">
-          <div className="row">
-            <div className="col-sm-8">
-            <div className="row">
-         <div className="col-sm-6">
+        <div className="row">
+         <div className="col-sm-4 my-2">
          <CustomInput
               elt={jobs}
               type={1}
@@ -88,7 +83,7 @@ const Search = (props) => {
               input={classes.formFeild}
             />
          </div>
-         <div className="col-sm-6">
+         <div className="col-sm-5 my-2">
          <CustomInput
               elt={cities}
               type={2}
@@ -97,17 +92,13 @@ const Search = (props) => {
               input={classes.formFeild} 
             />
          </div>
+         <div className="col-sm-3 my-2"> 
+         <Button color="primary" className={classes.btn} onClick={onSearch}>Rechercher</Button>
+
+         </div>
 
        </div>
-            </div>
-            <div className="col-sm-4">
-            <Button color="primary" className={classes.btn} onClick={onSearch}>Rechercher</Button>
-            </div>
-
-
-          </div>
-      
-     </div>
+          
     </div>
     
    
