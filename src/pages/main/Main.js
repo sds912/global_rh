@@ -8,6 +8,7 @@ import Footer from "../../components/footer/Footer";
 import MainInfo from "../../components/main-info/MainInfo";
 import Sectors from "../../components/secteur/sectors";
 import Prestations from '../../components/prestations/Prestation';
+import { isMobile } from "react-device-detect";
 
 const useStyles = makeStyles((theme) => ({
   main: {
@@ -22,6 +23,10 @@ export default function Main(props) {
     <div className={classes.main}>
       <Header />
       <Banner />
+      {
+        isMobile ? <div style={{ paddingTop: '120px'}} /> : ''
+      }
+      
       <MainInfo />
       <Prestations />
       <Jobs />

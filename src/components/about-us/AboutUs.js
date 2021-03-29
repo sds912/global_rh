@@ -124,7 +124,7 @@ const useStyles = makeStyles(() => ({
     lineHeight: "150%",
   },
   input: {
-    width: "35%",
+    width: "100%",
     height: "42px",
     border: "none",
     borderRadius: "4px",
@@ -230,15 +230,20 @@ const AboutUs = () => {
         </div>
         </div>
       <div className={classes.footer}>
-        <h2>S'INSCRIRE AUX NEWSLETTERS</h2>
+        <h2 style={{fontSize:"14px", fontWeight: "bold"}}>S'INSCRIRE AUX NEWSLETTERS</h2>
         <p style={{ padding: ".5em 5em" }}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil quas,{" "}
+          Restez informé,{" "}
           <br />
-          doloremque fugiat incidunt aut blanditiis
         </p>
         <div>
-          <input type="email" className={classes.input} placeholder="Email" />
-          <MainButton title="Envoyer" color="#d1004e" />
+          <div className="row">
+             <div className="col-sm-7 mt-2">
+             <input type="email" className={classes.input} placeholder="Email" />
+             </div>
+             <div className="col-sm-5 mt-2">
+             <MainButton title="Envoyer" color="#d1004e" />
+             </div>
+          </div>
         </div>
       </div>
       <Footer />

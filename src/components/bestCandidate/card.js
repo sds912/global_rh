@@ -50,7 +50,7 @@ const useStyles = makeStyles({
     color: "#A3A1A1",
   },
 });
-const JobCard = (props) => {
+const CandidatCard = (props) => {
 
 
   const { width, height } = useWindowSize();
@@ -83,14 +83,18 @@ const JobCard = (props) => {
         search: `?post=${id}`,
       });
     }}>
-      <div className="card" style={{width: "100%", textAlign:"left", minHeight: "380px"}}>
-        <img className="card-img-top" src={image} alt="Card image cap" style={{height: "180px"}} />
-        <div class="card-body">
-          <h5 className="card-title text-uppercase font-weight-bold" style={{fontSize: "12px"}}>{title}</h5>
-          <div>
-            <p style={{fontSize: "12px"}}>{city} | {contractType}</p>
-            <p style={{fontSize: "12px", marginTop:"-1em"}}>{organisation} | {sector}</p>
-          </div>
+      <div className="card" style={{width: "100%", textAlign:"left", minHeight: "320px"}}>
+        <div className="card-header bg-primary" style={{
+            height: "220px",
+            backgroundImage: "url("+ "https://lh3.googleusercontent.com/proxy/L2QpA_qTEgyPiDSUKmIh50ttGn2Yq5DaW5Ds6tkeZmCjv5mHCBXeaQDRhypKT5B9-CsuWNQIJnvMkHqlTJH7m1dFV1XuRVJZoNEJ9MzrUGr_Gg" +")",
+            backgroundPosition:"center",
+            backgroundSize: "cover"
+        }}>
+             
+        </div>
+        
+        <div class="card-body text-center">
+          <h5 className="card-title text-uppercase font-weight-bold mt-3" style={{fontSize: "12px"}}>{title}</h5>
           <div className="card-text">
                <span className="text-muted">{
                  addedAt != null
@@ -110,4 +114,4 @@ const JobCard = (props) => {
   );
 };
 
-export default JobCard;
+export default CandidatCard;

@@ -9,7 +9,6 @@ import firebase from "firebase";
 import Footer from "../../components/footer/Footer";
 import ReactHtmlParser from 'react-html-parser';
 
-
 const useStyles = makeStyles((theme) => ({
   root: {
     height: "100vh",
@@ -26,18 +25,12 @@ const Detail = () => {
   const history = useHistory();
   const location = useLocation();
  const param = location.search.substr(6);
-
-
  useEffect(() => {
  firebase.firestore().collection('posts').doc(param).onSnapshot((doc) =>{
   setPost(doc.data())
 })
   
  }, [])
-
-
-
- 
 
   return (
     <div className={classes.root}>

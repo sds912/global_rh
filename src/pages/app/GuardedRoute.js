@@ -10,4 +10,16 @@ const GuardedRoute = ({ component: Component, auth, ...rest }) => (
     )} />
 )
 
-export default GuardedRoute;
+
+function PrivateRoute ({component: Component, auth, ...rest}) {
+    return (
+      <Route
+        {...rest}
+        render={(props) => true 
+          ? <Component {...props} />
+          : <Redirect to={{pathname: '/signin', state: {from: props.location}}} />}
+      />
+    )
+  }
+
+export default PrivateRoute;

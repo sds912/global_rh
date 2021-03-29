@@ -20,17 +20,20 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import AccountPage from '../Account/index';
 import SavedOffer from "../savedOffers";
 import SavedResearch from '../saveResearsh/index';
-import GuardedRoute from './GuardedRoute';
 import BackOffice from "../backOffice";
 import MySearch from "../MyResearch";
 import ListPost from '../backOffice/listPost';
 import SignUpPage from "../SignUp";
+import PrivateRoute from "./GuardedRoute";
+import { Provider } from "react-redux";
+import store from "../../redux/store";
 
 
 
 const searchData = async (job = "", city = "") => {
   const db = firebase.firestore();
   var pts = [];
+  
  
  pts = await db.collection("posts")
     .where("title", "==", job)
@@ -66,13 +69,14 @@ class App extends Component {
       });
     }
    
-     console.log(this.authUser);
+    
     const db = firebase.firestore();
     return db.collection("posts").onSnapshot((snapshot) => {
       const posts = [];
       snapshot.forEach((doc) => posts.push({ ...doc.data(), id: doc.id }));
       this.setState({ posts });
     });
+    
   }
 
   componentWillUnmount() {
@@ -82,6 +86,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Provider store={store}>
         <PostContext.Provider value={this.state}>
           <AuthUserContext.Provider value={this.state.authUser}>
             <Switch>
@@ -93,7 +98,7 @@ class App extends Component {
               <Route exact path={ROUTES.WELCOME} component={Welcome} />
               <Route exact path={ROUTES.SIGN_UP} component={SignUpPage} />
               <Route exact path={ROUTES.DEPOSIT_CV} component={DepositCV} />
-              <GuardedRoute exact path={ROUTES.ACCOUNT} component={AccountPage} auth={this.state.authUser} />
+              <PrivateRoute exact path={ROUTES.ACCOUNT} component={AccountPage} auth={this.state?.authUser} />
               <Route exact path={ROUTES.MY_OFFER} component={SavedOffer} />
               <Route exact path={ROUTES.MY_SEARCH} component={SavedResearch} />
               <Route exact path={ROUTES.ADDPOST} component={BackOffice} />
@@ -102,6 +107,9 @@ class App extends Component {
             </Switch>
           </AuthUserContext.Provider>
         </PostContext.Provider>
+
+        </Provider>
+        
       </div>
     );
   }

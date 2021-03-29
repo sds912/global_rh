@@ -8,7 +8,7 @@ TimeAgo.addLocale(fr);
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: "calc(100vh - 380px)",
+    height: "280px",
     backgroundImage: 'url("/subbanner.png")',
     backgroundPosition: "center",
     backgroundSize: "cover",

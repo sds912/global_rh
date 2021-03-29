@@ -1,15 +1,13 @@
 import React from "react";
-import Header from "../header/Header";
 import { makeStyles } from "@material-ui/core";
 import Search from "../search/Search";
-import SideButtons from "../buttons/SideButtons";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
-    height: "70%",
+    height: "540px",
     backgroundColor: "blue",
-    backgroundImage: "url('/680.png')",
+    backgroundImage: 'url("./bg.png")',
     backgroundPosition: "center",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",

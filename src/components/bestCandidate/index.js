@@ -1,6 +1,5 @@
 import React from "react";
 import { makeStyles, Button } from "@material-ui/core";
-import JobCard from "./Card";
 import {
   CarouselProvider,
   Slider,
@@ -20,6 +19,10 @@ import {
 } from "react-device-detect";
 import { Container } from "react-bootstrap";
 import { useWindowSize } from 'react-window-size-hooks';
+import CandidatCard from "./card";
+import { connect } from "react-redux";
+import { listCandidats } from "../../redux/actions";
+import store from "../../redux/store";
 
 
 
@@ -66,9 +69,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Jobs = (props) => {
+const ConnectedBestCandidatList = (props) => {
   const classes = useStyles();
   const history = useHistory();
+
+  store.subscribe((prop) => console.log(prop))
 
   const { posts } = useContext(PostContext);
 
@@ -86,7 +91,7 @@ const Jobs = (props) => {
         naturalSlideHeight={ width <= 920  ? 640: 440}
       >
         <div className={classes.container}>
-          <h5 className="text-center my-3 h3">Offres d'emploies</h5>
+          <h5 className="text-center my-3 h3">Nos meilleurs profiles</h5>
           <Slider className={classes.slider}>
             {posts.map((item, index) => {
               return (
@@ -97,7 +102,7 @@ const Jobs = (props) => {
                         marginRight: index != posts.length ? "1em" : "0px",
                       }}
                     >
-                      <JobCard post={item} />
+                      <CandidatCard post={item} />
                     </div>
                   </Slide>
                 </div>
@@ -127,10 +132,27 @@ const Jobs = (props) => {
           })
         }
       >
-        Voir plus d'offres d'emploies
+        Voir plus de candudats
       </Button>
     </Container>
   );
 };
 
-export default Jobs;
+
+function mapDispatchToProps(dispatch) {
+  return {
+    listCandidats: () => dispatch(listCandidats)
+  };
+}
+
+const mapStateToProps = state => {
+  return { listCandidats: state.listCandidat };
+};
+
+const BestCandidatList = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+  
+)(ConnectedBestCandidatList)
+
+export default BestCandidatList;

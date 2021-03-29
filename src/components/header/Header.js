@@ -34,9 +34,9 @@ const Header = (props) => {
 
   return (
     <Navbar collapseOnSelect expand="lg" bg="light" variant="light" className={classes.root}>
-  <Navbar.Brand href="#home">
+  <Navbar.Brand>
     <Link to="/"> 
-      <img src="/logo/logo.png" height="42px" />
+      <img src="./logo/logo.png" height="42px" />
     </Link>
     </Navbar.Brand>
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />

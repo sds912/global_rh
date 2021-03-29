@@ -1,9 +1,17 @@
-import { makeStyles } from "@material-ui/core";
-import React,{useState} from "react";
+import { Divider, makeStyles } from "@material-ui/core";
+import React,{useContext, useEffect, useState} from "react";
 import Header from "../../components/header/Header";
 import SearchMenu from '../../components/search-menu/SearchMenu';
 import Footer from '../../components/footer/Footer';
-import PDFViewer from 'pdf-viewer-reactjs'
+import EditIcon from '@material-ui/icons/Edit';
+import CheckIcon from '@material-ui/icons/Check';
+
+import ReactQuill from "react-quill";
+import { AuthUserContext } from "../../Session";
+import firebase from "firebase";
+
+
+
 
 const useStyle = makeStyles((theme)=>({
   title: {
@@ -29,69 +37,175 @@ const useStyle = makeStyles((theme)=>({
 
 const AccountPage = (props) =>  {
 
+  const [descript, setdescript] = useState('Mettre une description');
+  const  [editing, setEditing] = useState(false);
+  const  authUser  = useContext(AuthUserContext);
+  const  [user, setUser] = useState();
+
+ 
+ 
+  
+ 
+  const RawHTML = ({children, className = ""}) => 
+<div className={className}
+  dangerouslySetInnerHTML={{ __html: children.replace(/\n/g, '<br />')}} />
+
   const classes = useStyle()
     return (
     <>
     <Header />
     <SearchMenu page="account" />
    
-    <div className='container mb-5' style={{textAlign: "left"}}>
+    <div className='container my-5'>
+
+      <h1 className="py-5">
+        Page en construction
+      </h1>
+
+      {
+
+      
+
+        /*
        <div className="row">
-         <div className="col-sm-2 " style={{textAlign:"left"}}>
-           <div style={{width: "160px", marginTop: "2em", marginBottom: "-2em"}}>
-             <img src="/avatar.png" className="img-fluid" />
-           </div>
-           <button 
-           className="btn text-white" 
-           style={{backgroundColor:"#008ba6", 
-           width: "120px",
-           borderRadius: "none !important"}}>
-             Télécharger
-
-           </button>
+         <div className="col-sm-4">
            <div>
-             <h5 style={{textTransform: "uppercase", fontSize:"16px", fontWeight:"600", color:"#008ba6" }}>moussa ndiaye</h5>
-             <ul style={{textAlign: "left", listStyle:"none", padding:"0"}}>
-               <li style={{fontSize:"14px", fontWeight: "600"}}>pape912.ps@gmail.com</li>
-               <li style={{fontSize:"14px", fontWeight: "600"}}>+221 77 744 36 63</li>
-               <li style={{fontSize:"14px", fontWeight: "600"}}>Dakar, Pattes d'oie</li>
-               <li style={{fontSize:"14px", fontWeight: "600"}}>Sénégal</li>
-             </ul>
+             <img style={{
+               width: "240px",
+               height: "240px"
+             }} src="https://cdn.fastly.picmonkey.com/contentful/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=800&q=70" />
+              
+              <div  className="mt-5" />
+              <Divider />
+              <div  className="mt-3" />
+
+               <ul style={{
+                 listStyle: "none",
+                 padding:"0px",
+                 textAlign: "left"
+               }}>
+                 <li> <strong>Nom: </strong> <span>{user?.lastName}</span></li>
+                 <li> <strong>Prénom:</strong> <span>{user?.firstName}</span> </li>
+                 <li> <strong>Email: </strong> <span>{user?.email}</span> </li>
+                 <li> <strong>Tél: </strong> <span>{user?.phone}</span> </li>
+               </ul>
+
            </div>
-          <button className="btn" style={{width:"180px"}}>
-            Modifier
-          </button>
-           
+
+
          </div>
-         <div 
-         className="col-sm-10 mt-5"
-         style={{
-          width: "21cm",
-          height: "29.7cm",
-          display: "block",
-          margin: "0 auto",
-          marginBottom: "0.5cm",
-          boxShadow:"0 0 0.5cm rgba(0,0,0,0.5)",
-           backgroundColor: "red",
-          paddingTop: "2em",
-          overflowY: "scroll"
-         }}
-         >
-          <PDFViewer
-            document={{
-                url: 'https://arxiv.org/pdf/quant-ph/0410100.pdf',
-            }}
+         <div className="col-sm-8 text-left">
+           <p>
+             <strong>{user?.firstName } {user?.lastName }</strong> <span className="mx-3">|</span> <span className="text-muted">{user?.city}</span>
+           </p>
+           <p>
+             <span className="font-weight-bold text-primary">Developpeur web et mobile</span>
+           </p>
+
+           <p className="text-center">
+            <div className="btn-group" role="group" >
+              <label  className="btn bg-primary"
+              style={{
+                height: "50px"
+              }}
+              onClick ={ () => {
+
+              }}
+               >Télécharger Mon CV
+               <input type="file" hidden />
+               </label>
+              <button type="button" className="btn brg-success"
+              style={{
+                height: "50px"
+              }}
+              >
+                <a
+                 style={{
+                   color: "#FFFFFF",
+                   textDecoration: "none"
+                 }}
+                 href = "https://firebasestorage.googleapis.com/v0/b/globalrh-7095b.appspot.com/o/cvs%2FProfile.pdf?alt=media&token=077c1e4d-2ecd-4fd5-8389-c0c3deeea541" target = "_blank"> Voir Mon CV</a>
+               </button>
+              <button type="button" className="btn bg-warning"
+              style={{
+                height: "50px"
+              }}
+              >Partager Mon CV</button>
+            </div>
+           </p>
+           <div  className="mt-5" />
+           <Divider  />
+           <div  className="mt-3" />
+
+           <div>
+             <h6>Description  <span className="mx-3" /> 
+             {
+               !editing ? <span
+               style={{
+                 cursor: "pointer"
+               }}
+               onClick={ () => {
+               setEditing(true);
+              }}><EditIcon  /></span> :  
+              <span
+              style={{
+                cursor: "pointer",
+                border: "1px solid gray",
+                padding: ".5em 1em",
+                borderRadius: "4px",
+
+              }}
+              onClick={ () => {
+              setEditing(false);
+             }}><CheckIcon style={{
+               color: "green",
+               fontSize: "36px",
+               fontWeight:"bolder"
+             }}  /> valider</span>
+             }
+             
+
             
+             
+               </h6>
+             <div>
+              
+              <div  className="mt-5" />
+                <RawHTML>
+                { !editing ? descript : ''}
+                </RawHTML>
+                
+                
+                {
+                  editing ? 
 
+                  <ReactQuill
+
+              style={{height: "250px"}} theme="snow" 
+              value={descript}  
+              onChange={(v) =>{
+                setdescript(v);
+                console.log(descript)
+                }}
+               />
+                  
+                  : ''
+                }
+              
+             </div>
+           </div>
            
-        />
-        </div> 
-        
+
+         </div>
+         
+
        </div>
-       
+
+       */
+
+}
+
     </div>
-
-
     <Footer />
     </>)
 }
