@@ -27,6 +27,7 @@ import SignUpPage from "../SignUp";
 import PrivateRoute from "./GuardedRoute";
 import { Provider } from "react-redux";
 import store from "../../redux/store";
+import { ToastContainer } from "react-toastify";
 
 
 
@@ -109,7 +110,7 @@ class App extends Component {
         </PostContext.Provider>
 
         </Provider>
-        
+        <ToastContainer  />
       </div>
     );
   }

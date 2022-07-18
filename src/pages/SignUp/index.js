@@ -12,7 +12,8 @@ const SignUpPage = ( ) => {
     const history = useHistory()
 	return (<React.Fragment>
 		<Header />
-		<Container className="mt-5">
+		<div className=" container my-5">
+			<h1>S'inscrire</h1>
 			<Row >
 				<Col md="5">
 					<div 
@@ -27,7 +28,7 @@ const SignUpPage = ( ) => {
 						
 					</div>
 				</Col>
-				<Col sm="12" md="7">
+				<Col sm="12" md="6">
 				  <SignUpForm />
 				  <p>Vous avez déjà un compte ? <span
 				  className="text-info"
@@ -38,7 +39,7 @@ const SignUpPage = ( ) => {
 				  >Se sonnecter</span></p>
 				</Col>
 			</Row>
-		</Container>
+		</div>
 		<Footer/>
    </React.Fragment>)
 }

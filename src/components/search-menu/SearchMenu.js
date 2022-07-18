@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/core";
 import CustomBtn from "./CustomBtn";
 import { useHistory } from 'react-router-dom';
+import { AuthUserContext } from "../../Session";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -17,15 +18,15 @@ const activebg = "#00778f";
 const SearchMenu = (props) => {
   const classes = useStyles();
   const history = useHistory();
+  const user = useContext(AuthUserContext);
+
 
   return (
     <div className={classes.root}>
       <CustomBtn
         bg={props.page != 'account'? inactivebg : activebg}
         text="ESPACE PERSONNEL"
-        action={() => {
-          history.push('/account/1')
-        }}
+        action={() => user != null ? history.push('/account/'+user?.uid): history.push('/auth')}
       />
       <CustomBtn
         bg={props.page != 'result'? inactivebg : activebg}

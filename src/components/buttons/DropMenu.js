@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import Grow from "@material-ui/core/Grow";
 import Paper from "@material-ui/core/Paper";
@@ -8,6 +8,7 @@ import MenuList from "@material-ui/core/MenuList";
 import { makeStyles } from "@material-ui/core/styles";
 import SignOutButton from "../../pages/SignOut/index";
 import {useHistory} from 'react-router-dom';
+import { AuthUserContext } from "../../Session";
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -23,8 +24,6 @@ const useStyles = makeStyles((theme) => ({
     height: "42px",
     borderRadius: "50%",
     border: "1px solid gray",
-    background:
-      "transparent url('https://randomuser.me/api/portraits/men/91.jpg')",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
     backgroundPosition: "center",
@@ -38,7 +37,9 @@ export default function UserAvatar() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
-  const history = useHistory()
+  const history = useHistory();
+  const user = useContext(AuthUserContext);
+
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -67,6 +68,8 @@ export default function UserAvatar() {
     }
 
     prevOpen.current = open;
+
+
   }, [open]);
 
   return (
@@ -78,7 +81,13 @@ export default function UserAvatar() {
           aria-haspopup="true"
           onClick={handleToggle}
           className={classes.profile}
-        ></span>
+          style={{
+            "background": `url('${localStorage.getItem(user?.uid)}')`,
+            "backgroundPosition": "center",
+            "backgroundSize": "contain"
+          }}
+        >
+        </span>
         <Popper
           open={open}
           anchorEl={anchorRef.current}
@@ -101,9 +110,13 @@ export default function UserAvatar() {
                     id="menu-list-grow"
                     onKeyDown={handleListKeyDown}
                   >
+                     <MenuItem onClick={handleClose}>
+                      <button className="btn btn-outline btn-block" onClick={()=>history.push("/account/"+ user.uid)}>Mon Profile</button>
+                    </MenuItem>
                     <MenuItem onClick={handleClose}>
                       <SignOutButton />
                     </MenuItem>
+                   
                   </MenuList>
                 </ClickAwayListener>
               </Paper>

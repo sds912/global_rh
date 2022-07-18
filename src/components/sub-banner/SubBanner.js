@@ -3,6 +3,12 @@ import { makeStyles } from "@material-ui/core/styles";
 import TimeAgo from "javascript-time-ago";
 
 import fr from "javascript-time-ago/locale/fr";
+import { isMobile } from "react-device-detect";
+import MainButton from "../buttons/MainButton";
+import firebase from "firebase";
+import { ToastContainer, toast } from 'react-toastify';
+
+const FieldValue = firebase.firestore.FieldValue;
 
 TimeAgo.addLocale(fr);
 
@@ -40,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
   },
   name: {
-    fontSize: "2.5em",
+    fontSize: isMobile ? "14px" : "2em",
     fontWeight: "800",
     color: "#151110",
   },
@@ -52,6 +58,23 @@ const SubBanner = (props) => {
   const { post } = props;
 
   const timeAgo = new TimeAgo("fr-FR");
+
+  const notify = () => toast.success("Votre candidature a été envoyé avec succes !");
+
+  const postuler=  async () => {
+    notify();
+
+     let isExiste = false;
+     if(firebase.auth().currentUser !== null){
+      const data = await firebase.firestore().collection('users').doc(firebase.auth().currentUser?.uid).get();
+      const user = data?.data();
+
+      firebase.firestore().collection('posts').doc(post?.uid).update('candidates', FieldValue.arrayUnion(user)).then(v => {
+        console.log(v)
+        
+      }).catch(err => console.log(err))
+     }
+  }
 
   return (
     <div className={classes.root}>
@@ -92,18 +115,20 @@ const SubBanner = (props) => {
               justifyContent: "center",
             }}
           >
-            <span>{timeAgo.format(post.addedAt)}</span>
+            <span>{timeAgo.format(post?.addedAt)}</span>
             <div className={classes.divider}></div>
-            <span className={classes.mt}>{post.contractType}</span>
+            <span className={classes.mt}>{post?.contractType}</span>
             <div className={classes.divider}></div>
-            <span>{post.city}</span>
+            <span>{post?.city}</span>
             <div className={classes.divider}></div>
-            <span>{post.category}</span>
+            <span>{post?.sector}</span>
           </div>
+          <MainButton title='Postuler maintenant' color='#C40556' action={postuler} />
         </div>
       ) : (
         <span>Loading ...</span>
       )}
+      
     </div>
   );
 };

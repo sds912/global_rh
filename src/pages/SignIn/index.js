@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import { useHistory, withRouter } from "react-router-dom";
 import { compose } from "recompose";
 
 import { withFirebase } from "../../Firebase";
@@ -21,6 +21,7 @@ const INITIAL_STATE = {
 };
 
 class SignInFormBase extends Component {
+
   constructor(props) {
     super(props);
 
@@ -28,15 +29,17 @@ class SignInFormBase extends Component {
   }
 
   onSubmit = (event) => {
+    let history = useHistory();
     this.setState({['loading']: true})
     const { email, password } = this.state;
 
     this.props.firebase
       .doSignInWithEmailAndPassword(email, password)
-      .then((user) => {
-        localStorage.setItem('currentUser',user.data.toString())
-        this.setState({ ...INITIAL_STATE });
-        this.props.history.push(ROUTES.MAIN);
+      .then((res) => {
+        localStorage.setItem('currentUser',res.data.toString())
+       history.push("/account/"+res.user.uid);
+      // this.setState({ ...INITIAL_STATE });
+
       })
       .catch((error) => {
         this.setState({ error });

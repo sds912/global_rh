@@ -92,9 +92,9 @@ class Login extends Component {
 
     this.props.firebase
       .doSignInWithEmailAndPassword(email, password)
-      .then(() => {
+      .then((res) => {
         this.setState({ ...INITIAL_STATE });
-        this.props.history.push(ROUTES.MAIN);
+        this.props.history.push("/account/"+res.user?.uid);
       })
       .catch((error) => {
         this.setState({ error });
@@ -115,6 +115,7 @@ class Login extends Component {
     return (
       <>
       <Header />
+      <div className="container">
       <Grid container component="main" className={this.props.classes.root}>
         <CssBaseline />
         <Grid
@@ -181,7 +182,7 @@ class Login extends Component {
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Link href="#" variant="body2">
+                  <Link href="/signup" variant="body2">
                     {"Pas encore de compte? S'inscrire"}
                   </Link>
                 </Grid>
@@ -194,6 +195,8 @@ class Login extends Component {
           </div>
         </Grid>
       </Grid>
+      </div>
+     
       </>
     );
   }

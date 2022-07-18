@@ -2,14 +2,13 @@ import app from "firebase/app";
 import "firebase/auth";
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyCx7zvSxEyxU_TqyXmXZj4Al8EtonMEcg4",
-  authDomain: "globalrh-7095b.firebaseapp.com",
-  databaseURL: "https://globalrh-7095b.firebaseio.com",
-  projectId: "globalrh-7095b",
-  storageBucket: "globalrh-7095b.appspot.com",
-  messagingSenderId: "1034493100663",
-  appId: "1:1034493100663:web:5b17d0b88bcb02068b3c72",
-  measurementId: "G-2HGGDEE921"
+  apiKey: "AIzaSyA12Zswbak5b5eAjq4F0Mz24hF5sllOpMU",
+  authDomain: "global-rh-7bd6a.firebaseapp.com",
+  projectId: "global-rh-7bd6a",
+  storageBucket: "global-rh-7bd6a.appspot.com",
+  messagingSenderId: "727956232509",
+  appId: "1:727956232509:web:8355f72a7256b4e77c4d54",
+  measurementId: "G-G63N37RM9G"
 };
 const googleProvider = new app.auth.GoogleAuthProvider();
 const facebookProvider = new app.auth.FacebookAuthProvider();

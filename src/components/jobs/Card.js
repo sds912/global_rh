@@ -78,10 +78,7 @@ const JobCard = (props) => {
 
   return (
     <div className="card" style={{cursor: "pointer"}} onClick={ () => {
-      history.push({
-        pathname: "/detail",
-        search: `?post=${id}`,
-      });
+      history.push(`/detail?post=${id}`);
     }}>
       <div className="card" style={{width: "100%", textAlign:"left", minHeight: "380px"}}>
         <img className="card-img-top" src={image} alt="Card image cap" style={{height: "180px"}} />

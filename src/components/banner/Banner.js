@@ -1,11 +1,11 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core";
-import Search from "../search/Search";
+import { isMobile } from "react-device-detect";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
-    height: "540px",
+    height:  "calc(100vh - 145px)",
     backgroundColor: "blue",
     backgroundImage: 'url("./bg.png")',
     backgroundPosition: "center",
@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundRepeat: "no-repeat",
     position: "relative",
     [theme.breakpoints.down("md")]: {
-      height: "80%",
+      height: "100vh",
     },
 
   },
@@ -35,6 +35,8 @@ const useStyles = makeStyles((theme) => ({
     opacity: 1,
     [theme.breakpoints.down("md")]: {
       fontSize: "36px",
+      marginLeft: ".5em",
+      marginTop: "1.5em",
     },
    
   },
@@ -44,9 +46,17 @@ const useStyles = makeStyles((theme) => ({
     letterSpacing: "0px",
     color: "#000000",
     position: "absolute",
-    marginLeft: "1.5em",
-    marginTop: "5em",
+    marginLeft: "2em",
+    marginTop: "6.5em",
     opacity: 1,
+    fontSize:"22px", 
+    fontWeight:"400",
+    [theme.breakpoints.down("md")]: {
+    marginTop: "9em",
+    marginLeft: ".5em",
+    color: "gray"
+      
+    },
    
   },
 }));
@@ -55,8 +65,9 @@ const Banner = () => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <h4 className={classes.title}>Construisons ensemble votre travail <br/> <span style={{fontSize:"22px", fontWeight:"400"}}> Nous avons forcément un travail pour vous</span></h4>
-        <Search />
+      <h4 className={classes.title}>Construisons ensemble votre travail</h4>
+      <p className={classes.subTitle}> Nous avons forcément un travail pour vous</p>
+       {/* <Search /> */}
     </div>
   );
 };

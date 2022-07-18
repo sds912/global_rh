@@ -133,18 +133,8 @@ const DepositCV = () => {
        </Row>
        <Row>
          <Col  md="6">
-           <div
-            style={{
-              width: "100%",
-              height: "calc(100vh - 200px)",
-              backgroundImage:'url("/relaxe.png")',
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "full",
-              backgroundSize: "100%"
-             }}
-           >
 
-           </div>
+           <img className="img-fluid" src="/relaxe.png" />
          </Col>
          <Col sm="12" md="6" className="my-5">
            <CandidateForm />

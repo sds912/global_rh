@@ -36,11 +36,12 @@ class SignUpFormBase extends Component {
     this.props.firebase
       .doCreateUserWithEmailAndPassword(email, password)
       .then((authUser) => {
-        console.log(this.props.firebase)
-        this.props.firebase.db.collection('users').add({
-          firstName,
-          lastName,
-          email
+        console.log(authUser.user.uid)
+        this.props.firebase.db.collection('users').doc(authUser.user.uid).set({
+          firstName: firstName,
+          lastName:lastName,
+           email: email,
+          uid: authUser.user.uid
         }).then(() => {
           this.setState({ ...INITIAL_STATE });
           this.props.history.push(ROUTES.MAIN);
@@ -109,11 +110,11 @@ class SignUpFormBase extends Component {
           placeholder="Confirmer mots de passe"
           className="input"
         />
-        <button disabled={isInvalid} type="submit" className="btn">
-          S'inscrire
-        </button>
+            <button disabled={isInvalid} type="submit" className="btn">
+              S'inscrire
+            </button>
 
-        {error && <p>{error.message}</p>}
+        {error && <p className="text-danger">{error.message}</p>}
       </form>
     );
   }

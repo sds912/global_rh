@@ -14,9 +14,7 @@ import { useHistory } from "react-router";
 
 function CandidateForm() {
 const [ datas, setDatas ] = useState(data);
-const [ cities, setCities ] = useState(datas['0']["Senegal"]);
 const [loading, setLoading] = useState(false);
-const [ countries, setCountries ] = useState(Object.keys(datas['0'])); 
 const [fileName, setFileName] = useState();
 const [confirm, setConfirm] = useState(true);
 const history = useHistory();
@@ -28,11 +26,7 @@ const history = useHistory();
 
   const { register, handleSubmit, errors, reset } = useForm();
 
-  const  getCities = (country)=>{
-    setCities(datas['0'][country]);
-   }
-
-   
+ 
 
   const onSubmit = async (formData) => {
     if(formData['password'] != formData['confirm']){
@@ -77,7 +71,6 @@ const history = useHistory();
 
             firebase.auth().createUserWithEmailAndPassword(formData.email, formData.password)
               .catch((error) => {
-                     console.log(error)
                      toast('Ce mail exist déjà')
               })
               .then((ress) => {
@@ -85,9 +78,8 @@ const history = useHistory();
                 formData['uid'] =ress.user.uid
                 firebase.firestore().collection('candidature').add(formData).then((res) => {
                   setLoading(false);
-                  history.push(`/account/${ress.user.uid}`)
+                  history.push(`/account/${res?.user?.uid}`)
                 }).catch((error) => {
-                  console.log(error)
                 })
                 
               })
@@ -147,7 +139,7 @@ const history = useHistory();
             className="form-control"
             ref={register({ required: true })}
             />
-            {errors.email && <span style={styles}>Le champ Emai est requis</span>}
+            {errors.email && <span style={styles}>Le champ Email est requis</span>}
         </div>
         <div className="form-group">
             <label>Téléphone</label>
@@ -184,39 +176,27 @@ const history = useHistory();
         </div>
         
         <div className="form-group">
-            <label>Pays</label>
-            <select
-            name="country"
+            <label>Adresse </label>
+            <input
+            name="adresse"
             type="text"
-            className="custom-select"
-            onChange={(v) => getCities(v.target.value)}
-            defaultValue="Senegal"
-            ref={register({required: true })}
-            >
-              { countries.map((item, key) => <option key={key} value={item} >{item}</option>)}
-
-            </select>
-            {errors.country && <span style={styles}>Le champ Pays est requis</span>}
+            className="form-control"
+            ref={register({ required: true })}
+            />
+            {errors.adresse && <span style={styles}>Le champ Adresse est requis</span>}
         </div>
-
-        <div className="form-group">
-            <label>Ville</label>
-            <select
-            name="city"
-            type="text"
-            className="custom-select"
-            defaultValue="Dakar"
-            ref={register({required: true })}
-            >
-              { cities.map((item, key) => <option key={key} value={item} >{item}</option>)}
-
-            </select>
-            {errors.city && <span style={styles}>Le champ Ville est requis</span>}
-        </div>
-       
-
-        <button type="submit" className="btn btn-primary pulled-right" >
-          <span className="mr-5">Enrégistrer</span>
+         
+        <button type="submit" style={{
+          "backgroundColor": "#008ba6",
+          "float": "right",
+          "padding": ".8em 2em",
+          "outline": "none",
+          "border": "none",
+          "color": "#ffffff",
+          "cursor": "pointer",
+          "borderRadius": "4px"
+        }} >
+          Enrégistrer
           { loading ? <CircularProgress size="22" color="#FFFFFF" style={{fontWeight: "bold"}} /> : ''}
          
         </button>
